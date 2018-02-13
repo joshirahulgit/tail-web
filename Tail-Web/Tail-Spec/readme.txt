@@ -1,0 +1,1 @@
+﻿This project contains all the specifications for Tailing a file. Specification derived based on Linux Tail to synchronize the method name.

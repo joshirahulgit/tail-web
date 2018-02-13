@@ -6,19 +6,20 @@ using System.Web;
 using System.Threading.Tasks;
 using System.Timers;
 using Tail_Impl;
+using Tail_Spec;
 
 namespace Tail_Api
 {
     public class TailHub : Hub
     {
-        private static Dictionary<string, Tail> tails;
+        private static Dictionary<string, ITail> tails;
         private static Dictionary<string, int> groupCount;
 
         static TailHub()
         {
             groupCount = new Dictionary<string, int>();
             groupCount.Add("log1Tail", 0);
-            tails = new Dictionary<string, Tail>();
+            tails = new Dictionary<string, ITail>();
             tails.Add("log1Tail", new Tail(@"C:\rahul\src\Tail-Web\Tail-Web\Tail-Api\test-tail.txt"));
         }
 

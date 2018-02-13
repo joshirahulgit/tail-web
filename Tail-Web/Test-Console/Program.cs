@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tail_Impl;
+using Tail_Spec;
 
 namespace Test_Console
 {
@@ -11,12 +12,13 @@ namespace Test_Console
     {
         static void Main(string[] args)
         {
-            Tail tail = new Tail(@"C:\Users\rjoshi.QUICKLOOK\Desktop\test-tail.txt");
+            ITail tail = new Tail(@"C:\rahul\src\Tail-Web\Tail-Web\Tail-Api\test-tail.txt");
             tail.Follow(item => {
                 Console.WriteLine(item);
             });
 
             Console.ReadLine();
+            tail.Unfollow();
         }
     }
 }

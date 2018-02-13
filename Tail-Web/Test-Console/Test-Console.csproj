@@ -54,6 +54,13 @@
       <Project>{2F9E9CA1-6660-4C24-984F-7564018373CB}</Project>
       <Name>Tail-Impl</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Tail-Spec\Tail-Spec.csproj">
+      <Project>{91CD1621-C301-4C04-8ECF-7967C8FB3141}</Project>
+      <Name>Tail-Spec</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
