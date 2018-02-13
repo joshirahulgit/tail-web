@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tail.Api
+namespace Tail_Api
 {
     //internal class ApplicationSetting : IApplicationSetting
     //{

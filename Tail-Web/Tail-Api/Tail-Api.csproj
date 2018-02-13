@@ -11,7 +11,7 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Tail.Api</RootNamespace>
+    <RootNamespace>Tail_Api</RootNamespace>
     <AssemblyName>Tail-Api</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
@@ -237,16 +237,26 @@
     <Compile Include="App_Start\PublicFileConfiguration.cs" />
     <Compile Include="App_Start\HttpRouteConfiguration.cs" />
     <Compile Include="Controllers\ControllerExt.cs" />
-    <Compile Include="Controllers\TaskController.cs" />
-    <Compile Include="EventHub.cs" />
-    <Compile Include="MessageHandler.cs" />
+    <Compile Include="Controllers\TailController.cs" />
     <Compile Include="Models\JwtClaimModel.cs" />
+    <Compile Include="Models\TailRequest.cs" />
+    <Compile Include="Models\TailResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestContext.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="TailHub.cs" />
+    <Compile Include="Hub\TailHub.cs" />
     <Compile Include="Utils\JwtHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tail-Impl\Tail-Impl.csproj">
+      <Project>{2f9e9ca1-6660-4c24-984f-7564018373cb}</Project>
+      <Name>Tail-Impl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tail-Spec\Tail-Spec.csproj">
+      <Project>{91cd1621-c301-4c04-8ecf-7967c8fb3141}</Project>
+      <Name>Tail-Spec</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
@@ -260,17 +270,17 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1337</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/index.html</IISUrl>
+          <IISUrl>http://localhost/Tail-Api</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>True</UseCustomServer>
+          <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
           </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
-          <servers defaultServer="OwinHost">
+          <servers defaultServer="">
             <server name="OwinHost" exePath="{solutiondir}\packages\OwinHost.3.1.0\tools\OwinHost.exe" cmdArgs="-u {url}" url="http://localhost:7887/" workingDir="{projectdir}" />
           </servers>
         </WebProjectProperties>

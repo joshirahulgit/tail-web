@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Tail.Api.App_Start
+namespace Tail_Api.App_Start
 {
     public class AppConfiguration
     {

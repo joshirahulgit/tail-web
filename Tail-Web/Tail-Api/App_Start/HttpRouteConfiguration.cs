@@ -17,7 +17,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using TailApi.Application.Controllers;
 
-namespace Tail.Api.App_Start
+namespace Tail_Api.App_Start
 {
     public class HttpRouteConfiguration
     {
@@ -47,59 +47,5 @@ namespace Tail.Api.App_Start
 
             return httpConfiguration;
         }
-    }
-
-    public class AuthorizationFilter : ActionFilterAttribute
-    {
-        public override Task OnActionExecutingAsync(HttpActionContext actionContext, CancellationToken cancellationToken)
-        {
-            //if (!(actionContext.ControllerContext.Controller is AuthController))
-            //{
-            //    // Check Token is there and token is valid.
-            //    if (actionContext.Request.Headers.Authorization == null)
-            //        actionContext.Response = new System.Net.Http.HttpResponseMessage(System.Net.HttpStatusCode.Unauthorized);
-            //    else
-            //    {
-            //        var scheme = actionContext.Request.Headers.Authorization.Scheme;
-            //        var token = actionContext.Request.Headers.Authorization.Parameter;
-            //        if (!"Bearer".Equals(scheme) || string.IsNullOrEmpty(token))
-            //            actionContext.Response = new System.Net.Http.HttpResponseMessage(System.Net.HttpStatusCode.Unauthorized);
-
-            //        var jwtModel = JwtHelper.GetJwtClaimModel(token);
-
-            //        if(jwtModel==null)
-            //            actionContext.Response = new System.Net.Http.HttpResponseMessage(System.Net.HttpStatusCode.Unauthorized);
-
-
-            //    }
-
-            //}
-
-            return base.OnActionExecutingAsync(actionContext, cancellationToken);
-        }
-
-        //public override void OnActionExecuting(HttpActionContext actionContext)
-        //{
-        //    //GetRequestContext(token);
-        //    base.OnActionExecuting(actionContext);
-        //}
-
-        //public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
-        //{
-
-        //    //var token = this.GetJwtToken();
-
-        //    //actionExecutedContext.Response.Headers.Add("Authorization", $"Bearer {token}");
-
-        //    base.OnActionExecuted(actionExecutedContext);
-
-        //}
-
-        //private static void GetRequestContext(string token)
-        //{
-        //    token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyTmFtZSI6InJhaHVsLmpvc2hpIiwidXNlcklkIjoiNzg5NDU2In0.MEa910yquCj29U-RfRH55gvqrX-yaYSuTQoPU_bJODg";
-        //    var secret = "GQDstcKsx0NHjPOuXOYg5MbeJ1XT0uFiwDVvVBrk";
-
-        //}
     }
 }

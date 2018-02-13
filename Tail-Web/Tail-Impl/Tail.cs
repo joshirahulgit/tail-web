@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Tail_Spec;
 
@@ -10,9 +11,13 @@ namespace Tail_Impl
 {
     public class Tail : ITail
     {
+        private bool _isFollowing = false;
+
         private string _fileName;
 
         private Action<string> _followCallback;
+
+        public bool IsFollowing => _isFollowing;
 
         public Tail(string fileName)
         {
@@ -27,15 +32,33 @@ namespace Tail_Impl
         public void Follow(Action<string> followCallback)
         {
             this._followCallback = followCallback;
+            this._isFollowing = true;
+            Thread thread = new Thread(startFollow);
+            thread.Start();
+            //startFollow();
+        }
 
-            using (StreamReader reader = new StreamReader(new FileStream(this._fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite)))
+        public void Unfollow()
+        {
+            this._followCallback = null;
+            this._isFollowing = false;
+        }
+
+        private void startFollow()
+        {
+            using (StreamReader reader = new StreamReader(
+                            new FileStream(
+                                this._fileName,
+                                FileMode.Open,
+                                FileAccess.Read,
+                                FileShare.ReadWrite)))
             {
                 //start at the end of the file
                 long lastMaxOffset = reader.BaseStream.Length;
 
-                while (true)
+                while (_isFollowing)
                 {
-                    System.Threading.Thread.Sleep(100);
+                    System.Threading.Thread.Sleep(1000);
 
                     //if the file size has not changed, idle
                     if (reader.BaseStream.Length == lastMaxOffset)
@@ -46,7 +69,7 @@ namespace Tail_Impl
 
                     //read out of the file until the EOF
                     string line = "";
-                    while ((line = reader.ReadLine()) != null)
+                    while (!string.IsNullOrEmpty(line = reader.ReadLine()))
                         //Console.WriteLine(line);
                         this._followCallback?.Invoke(line);
 
@@ -54,7 +77,6 @@ namespace Tail_Impl
                     lastMaxOffset = reader.BaseStream.Position;
                 }
             }
-
         }
 
         public string[] Line(int line = 10)

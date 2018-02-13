@@ -1,7 +1,18 @@
 <!--The whole content below can be removed with the new code.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to Tail
-  </h1> 
+<div class="main-container">
+  <div class="header">
+    <h1>
+      Tail Web
+    </h1>
+    <div>
+      <input type="button" value="Start" (click)="startPull()">
+      <input type="button" value="Stop" (click)="stopPull()">
+    </div>
+  </div>
+  <div class="body">
+    <tail-viewer [lines]="lines"></tail-viewer>
+  </div>
+  <div class="footer">
+    
+  </div>
 </div>
-

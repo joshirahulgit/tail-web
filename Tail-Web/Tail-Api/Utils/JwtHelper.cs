@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Tail.Api.Utils
+namespace Tail_Api.Utils
 {
     //internal static class JwtHelper
     //{

@@ -10,6 +10,10 @@ namespace Tail_Spec
     {
         void Follow(Action<string> followCallback);
 
+        bool IsFollowing { get; }
+
+        void Unfollow();
+
         long Bytes(int start = 0);
 
         string[] Line(int line = 10);
