@@ -227,6 +227,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="public\index.html" />
+    <Content Include="readme.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
